@@ -7,8 +7,8 @@ CFLAGS  = -g
 
 all: test
 
-test: test.cpp boruvka.h
-	$(CC) $(CFLAGS) -o test test.cpp boruvka.h
+test: test.cpp boruvka.h boruvka2.h boruvka3.h kruskal.h kruskal2.h common.h
+	$(CC) $(CFLAGS) -o test test.cpp boruvka.h boruvka2.h boruvka3.h kruskal.h kruskal2.h common.h
 
 clean:
 	rm -f *.o test
