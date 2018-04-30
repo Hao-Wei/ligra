@@ -86,6 +86,18 @@ void MLOGGAPA(vector<int> &perm, vector<vector<int> > &adj, LogGapInfo *gapInfo)
     }
 }
 
+double entropy(LogGapInfo &gapInfo)
+{
+    double ent = 0;
+    double tmp = 0;
+    for (const auto &p : gapInfo.freqs)
+    {
+        tmp = (double)p.second) / gapInfo.len;
+        ent += tmp * (-log2(tmp));
+    }
+    return ent;
+}
+
 /*int numBits(LogGapInfo *gapInfo, Node *root)
 {
     int bits = 0;
