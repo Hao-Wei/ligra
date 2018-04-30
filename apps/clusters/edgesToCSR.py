@@ -19,9 +19,10 @@ def edgesToCSR(input_path, output_path, num_nodes):
       f.write(str(offset) + "\n")
       if i in counters:
         offset += counters[i]
-    for i in adj:
-      for j in adj[i]:
-        f.write(str(j) + "\n")
+    for i in range(num_nodes):
+      if i in adj:
+        for j in adj[i]:
+          f.write(str(j) + "\n")
         
 if __name__ == '__main__':
   edgesToCSR(sys.argv[1], sys.argv[2], int(sys.argv[3]))
