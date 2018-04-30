@@ -17,7 +17,7 @@ private:
 
     for(int i = 0; i < n; i++)
       clusters[i] = new CNode(i);
-    cerr << "begin main boruvka loop" << endl;
+    //cerr << "begin main boruvka loop" << endl;
     bool change = true;
     while(change)
     {

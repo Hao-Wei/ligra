@@ -8,7 +8,7 @@
 #include <queue>
 using namespace std;
 typedef map<int,unsigned int> CounterMap;
-double MLOGA(vector<int> perm, vector<vector<int> > adj)
+double MLOGA(vector<int> &perm, vector<vector<int> > &adj)
 {
     double gaps = 0;
     unsigned adj_size = adj.size();
@@ -20,10 +20,10 @@ double MLOGA(vector<int> perm, vector<vector<int> > adj)
         for(unsigned j = 0; j < num_edges; j++)
         {
             //cout << max(abs(perm[adj[i][j]] - pi_u), 1) << endl;
-            gaps += max(log2(abs(perm[adj[i][j]] - pi_u)), 1.0);
+            gaps += log2(abs(perm[adj[i][j]] - pi_u));
         }
     }
-    return gaps;
+    return gaps/2;
 }
 
 struct Node
@@ -51,7 +51,7 @@ struct LogGapInfo
     priority_queue<Node*, vector<Node*>, compare> q;
 };
 
-void MLOGGAPA(vector<int> perm, vector<vector<int> > adj, LogGapInfo *gapInfo)
+void MLOGGAPA(vector<int> &perm, vector<vector<int> > &adj, LogGapInfo *gapInfo)
 {
     unsigned adj_size = adj.size();
     for(unsigned i = 0; i < adj_size; i++)
@@ -70,7 +70,7 @@ void MLOGGAPA(vector<int> perm, vector<vector<int> > adj, LogGapInfo *gapInfo)
         for(unsigned j = 0; j < num_edges - 1; j++)
         {
             int tmp_gap = map_vertices[j + 1] - map_vertices[j];
-            double tmp = max(log2(tmp_gap), 1.0);
+            double tmp = log2(tmp_gap);
             gapInfo->gaps += tmp;
             gapInfo->len += 1;
             CounterMap::iterator it(gapInfo->freqs.find(tmp_gap));
@@ -113,7 +113,7 @@ bool DFS(LogGapInfo *gapInfo, Node *node, int depth, int *bits)
     }
     return true;
 }
-
+/*
 int main()
 {
     int num_vertices = 4;
@@ -171,4 +171,4 @@ int main()
     DFS(&gapInfo, root, 0, &bits);
     cout << bits << endl;
     return 0;
-}
+}*/

@@ -105,5 +105,23 @@ void adj_to_edge_list(int** adj, vector<wghEdge<intE> > &edge_list, int n)
         edge_list.push_back(wghEdge<intE>(i, j, adj[i][j]));
 }
 
+void edge_list_to_adj_list(vector<wghEdge<intE> > &edge_list, vector<vector<int> > &adj_list, int n)
+{
+  adj_list = vector<vector<int> >(n);
+  for(int i = 0; i < edge_list.size(); i++)
+  {
+    int u = edge_list[i].u;
+    int v = edge_list[i].v;
+    adj_list[u].push_back(v);
+    adj_list[v].push_back(u);
+  }
+}
+
+void flip_perm(vector<int> &perm)
+{
+  vector<int> cc;
+  for(int i = 0; i < perm.size(); i++) cc.push_back(perm[i]);
+  for(int i = 0; i < perm.size(); i++) perm[cc[i]] = i;
+}
 
 #endif

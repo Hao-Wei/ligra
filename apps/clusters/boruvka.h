@@ -36,7 +36,7 @@ private:
       cid[i] = i;
       g[i].clear();
     }
-    cerr << "begin main boruvka loop" << endl;
+    //cerr << "begin main boruvka loop" << endl;
     while(clusters.size() > 1)
     {
       cerr << "cluster size: " << clusters.size() << endl;
@@ -97,10 +97,12 @@ private:
           root->children.push_back(clusters[i]);
           delete new_clusters[i];
         }
+        cout << "mst = " << mst << endl;
         return root;
       }
       clusters = new_clusters;
     }
+    cout << "mst = " << mst << endl;
     return clusters[0];
   }
 
