@@ -92,7 +92,7 @@ double entropy(LogGapInfo &gapInfo)
     double tmp = 0;
     for (const auto &p : gapInfo.freqs)
     {
-        tmp = (double)p.second) / gapInfo.len;
+        tmp = ((double)p.second) / gapInfo.len;
         ent += tmp * (-log2(tmp));
     }
     return ent;

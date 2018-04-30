@@ -70,6 +70,7 @@ void print_metrics(int num_edges, vector<int>& perm, vector<int>& iden, vector<v
   bitsNorm = compute_gaps(gapInfoNorm);
   cout << "Huff: " << 1.0*bitsNorm/num_edges << endl;
 
+  
 
   /*ans = MLOGA(iden, adj_list);
   cout << "NUM BITS: " << ans/edge_list.size() << endl;
