@@ -5,6 +5,7 @@
 #include<vector>
 #include<stdlib.h>
 #include <iomanip> 
+#include<fstream>
 
 using namespace std;
 
@@ -113,7 +114,6 @@ void edge_list_to_adj_list(vector<wghEdge<intE> > &edge_list, vector<vector<int>
     int u = edge_list[i].u;
     int v = edge_list[i].v;
     adj_list[u].push_back(v);
-    adj_list[v].push_back(u);
   }
 }
 

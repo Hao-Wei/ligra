@@ -56,20 +56,24 @@ void print_metrics(int num_edges, vector<int>& perm, vector<int>& iden, vector<v
   int bitsIdent = 0;
   int bitsNorm = 0;
   ans = MLOGA(iden, adj_list);
-  cout << "MLOGA: " << ans/num_edges << endl;
+  cout << "MLOGA: " << 2.0*ans/num_edges << endl;
   ans = MLOGA(perm, adj_list);
-  cout << "MLOGA: " << ans/num_edges << endl;
+  cout << "MLOGA: " << 2.0*ans/num_edges << endl;
 
   MLOGGAPA(iden, adj_list, &gapInfoIdent);
-  cout << "MLOGGAPA: " << gapInfoIdent.gaps/num_edges << endl;
+  cout << "MLOGGAPA: " << 2.0*gapInfoIdent.gaps/num_edges << endl;
   MLOGGAPA(perm, adj_list, &gapInfoNorm);
-  cout << "MLOGGAPA: " << gapInfoNorm.gaps/num_edges << endl;
+  cout << "MLOGGAPA: " << 2.0*gapInfoNorm.gaps/num_edges << endl;
 
   bitsIdent = compute_gaps(gapInfoIdent);
-  cout << "Huff: " << 1.0*bitsIdent/num_edges << endl;
+  cout << "Huff: " << 2.0*bitsIdent/num_edges << endl;
   bitsNorm = compute_gaps(gapInfoNorm);
-  cout << "Huff: " << 1.0*bitsNorm/num_edges << endl;
+  cout << "Huff: " << 2.0*bitsNorm/num_edges << endl;
 
+  double entropyIden = entropy(gapInfoIdent);
+  cout << "Entropy: " << entropyIden << endl;
+  double entropyNorm = entropy(gapInfoNorm);
+  cout << "Entropy: " << entropyNorm << endl;
   
 
   /*ans = MLOGA(iden, adj_list);
